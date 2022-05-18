@@ -18,7 +18,6 @@ jobs:
         node-version: 18
       
     - name: Build Frontend
-      working-directory: ./frontend
       run: npm install && npm run build
       
     - name: Send Frontend Files to Server
