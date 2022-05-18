@@ -30,7 +30,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         rm: true
         strip_components: 3
-        source: './frontend/dist'
+        source: './dist'
         target: './taskfy-frontend' 
 
   sonarqube:
