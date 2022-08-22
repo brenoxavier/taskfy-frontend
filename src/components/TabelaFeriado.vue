@@ -1,8 +1,5 @@
 <template>
   <v-card>
-    <!--    <v-card-title>-->
-    <!--      <span class="text-h5">Feriados</span>-->
-    <!--    </v-card-title>-->
     <v-card-text>
       <v-simple-table v-if="feriados.length > 0">
         <template v-slot:default>
@@ -60,7 +57,7 @@
           this.feriados = data
         } catch (erro) {
           console.error(erro)
-          this.$toast.error('Não foi possivel buscar informações no servidor.')
+          this.$toast.error('Não foi possível buscar informações no servidor.')
         }
       },
       async deletarFeriado (id) {
@@ -69,7 +66,7 @@
           this.$store.commit('setRecarregar')
           this.$toast.success('Feriado deletado com sucesso!')
         } catch (erro) {
-          this.$toast.error('Não foi possivel deletar o feriado.')
+          this.$toast.error('Não foi possível deletar o feriado.')
         }
       },
       formatarData (data) {

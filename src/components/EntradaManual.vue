@@ -139,7 +139,9 @@
               <v-col cols="12">
                 <v-textarea
                     label="Motivo"
+                    :rules="validaMotivo"
                     v-model="motivo"
+                    counter="255"
                 />
               </v-col>
             </v-row>
@@ -180,7 +182,11 @@
       dataFim: '',
       inicioHoras: '',
       fimHoras: '',
-      motivo: ''
+      motivo: '',
+      validaMotivo: [
+        v => !!v || 'Informe o motivo da entrada manual.',
+        v => v.length <= 255 || 'Máximo de 255 caracteres atingido.'
+      ]
     }),
     methods: {
       async cadastrarEntradaManual () {
@@ -195,7 +201,7 @@
           this.dialog = false
           this.$toast.success('Entrada cadastrada com sucesso!')
         } catch (erro) {
-          this.$toast.error('Não foi possivel cadastrar a entrada manual.')
+          this.$toast.error('Não foi possível cadastrar a entrada manual.')
         }
       }
     }

@@ -20,10 +20,10 @@
                     <b>E-mail:</b> {{ usuario.email }}
                   </div>
                   <div>
-                    <b>Carga Horaria:</b> {{ usuario.carga_horaria }}
+                    <b>Carga Horária:</b> {{ usuario.carga_horaria }}
                   </div>
                   <div>
-                    <b>Trabalha Sabado:</b> {{ usuario.sabado ? 'Sim' : 'Não' }}
+                    <b>Trabalha Sábado:</b> {{ usuario.sabado ? 'Sim' : 'Não' }}
                   </div>
                   <div>
                     <b>Data do Cadastro:</b> {{ formatarDataTempo(usuario.created_at) }}

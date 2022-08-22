@@ -51,7 +51,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-account-multiple-outline</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Usuarios</v-list-item-title>
+              <v-list-item-title>Usuários</v-list-item-title>
             </v-list-item>
           </router-link>
           <router-link :to="{ name: 'Feriados' }" style="text-decoration: none;">

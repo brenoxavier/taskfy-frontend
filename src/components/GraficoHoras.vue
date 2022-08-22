@@ -70,7 +70,7 @@
             y: horas,
             goals: [
               {
-                name: 'Carga Horaria',
+                name: 'Carga Horária',
                 value: dia.horas_uteis,
                 strokeColor: '#4caf50'
               }

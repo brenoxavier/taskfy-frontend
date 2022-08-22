@@ -26,7 +26,7 @@
     </v-col>
     <v-col cols="12" sm="6" md="3">
       <v-card>
-        <v-card-title>Horas Uteis</v-card-title>
+        <v-card-title>Horas Úteis</v-card-title>
         <v-card-text>
           <v-row>
             <v-col class="text-h4">
