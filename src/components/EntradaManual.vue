@@ -143,6 +143,9 @@
                     v-model="motivo"
                     counter="255"
                 />
+                <v-checkbox
+                    v-model="justificada"
+                    label="Hora justificada" />
               </v-col>
             </v-row>
           </v-form>
@@ -174,6 +177,7 @@
     props: ['idUsuario'],
     data: () => ({
       dialog: false,
+      justificada: false,
       menuInicio: false,
       menuFim: false,
       menuInicioHoras: false,
@@ -195,7 +199,8 @@
             id_usuario: this.idUsuario,
             inicio: `${this.dataInicio} ${this.inicioHoras}`,
             fim: `${this.dataFim} ${this.fimHoras}`,
-            motivo: this.motivo
+            motivo: this.motivo,
+            justificada: this.justificada
           })
 
           this.dialog = false
