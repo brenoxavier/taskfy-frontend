@@ -26,7 +26,7 @@
                   <template v-slot:default>
                     <thead>
                       <tr>
-                        <th>Inicio</th>
+                        <th>Início</th>
                         <th>Fim</th>
                         <th>Horas Trabalhadas</th>
                         <th>Horas Diurnas</th>
@@ -108,7 +108,7 @@
           await this.$http.delete(`/entrada/${idEntrada}`)
           this.$toast.success('Entrada deletada com sucesso!')
         } catch (erro) {
-          this.$toast.error('Não foi possivel deletar a entrada.')
+          this.$toast.error('Não foi possível deletar a entrada.')
         }
       },
       preencherTabela () {

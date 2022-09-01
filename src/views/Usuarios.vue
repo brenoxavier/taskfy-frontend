@@ -3,7 +3,7 @@
     <v-container>
       <v-card elevation="0">
         <v-card-title class="mt-5">
-          <h1>Usuarios</h1>
+          <h1>Usuários</h1>
           <CadastrarUsuario class="ml-auto" />
         </v-card-title>
       </v-card>

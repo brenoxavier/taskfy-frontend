@@ -36,6 +36,14 @@
             <v-list-item-title>Ponto</v-list-item-title>
           </v-list-item>
         </router-link>
+        <router-link :to="{ name: 'Tarefas' }" style="text-decoration: none;">
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-format-list-checks</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Minhas tarefas</v-list-item-title>
+          </v-list-item>
+        </router-link>
         <!--        <v-list-item link>-->
         <!--          <v-list-item-icon>-->
         <!--            <v-icon>mdi-cog-outline</v-icon>-->
@@ -51,7 +59,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-account-multiple-outline</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Usuarios</v-list-item-title>
+              <v-list-item-title>Usuários</v-list-item-title>
             </v-list-item>
           </router-link>
           <router-link :to="{ name: 'Feriados' }" style="text-decoration: none;">
@@ -62,9 +70,37 @@
               <v-list-item-title>Feriados</v-list-item-title>
             </v-list-item>
           </router-link>
+          <v-list-item link @click="exibirDialogLogout = true">
+            <v-list-item-icon>
+              <v-icon>mdi-logout</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Sair</v-list-item-title>
+          </v-list-item>
         </v-list>
       </span>
     </v-navigation-drawer>
+
+    <v-dialog v-model="exibirDialogLogout" persistent max-width="400px">
+      <v-card>
+        <v-card-title>Sair</v-card-title>
+        <v-card-text>Tem certeza que deseja sair?</v-card-text>
+
+        <v-card-actions class="justify-end">
+          <v-btn
+              color="primary"
+              text
+              @click="exibirDialogLogout = false">
+            Cancelar
+          </v-btn>
+          <v-btn
+              color="primary"
+              text
+              @click="logout">
+            Confirmar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -72,6 +108,7 @@
   export default {
     data: () => ({
       exibir: false,
+      exibirDialogLogout: false,
       nome: '',
       email: '',
       fotoPerfil: ''
@@ -93,6 +130,12 @@
         this.nome = usuario.nome
         this.email = usuario.email
         this.fotoPerfil = usuario.foto_perfil
+      }
+    },
+    methods: {
+      logout () {
+        localStorage.clear()
+        location.reload(true)
       }
     }
   }

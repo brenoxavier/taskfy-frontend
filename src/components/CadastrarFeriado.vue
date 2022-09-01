@@ -47,7 +47,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
-          <v-btn color="blue darken-1" text @click="cadastrarUsuario">Cadastrar</v-btn>
+          <v-btn color="blue darken-1" text @click="cadastrarFeriado">Cadastrar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -65,7 +65,7 @@
       }
     }),
     methods: {
-      async cadastrarUsuario () {
+      async cadastrarFeriado () {
         this.dialog = false
 
         try {

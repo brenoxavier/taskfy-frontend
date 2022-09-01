@@ -1,7 +1,7 @@
 <template>
   <span>
     <v-btn color="primary" @click="() => dialog = true">
-      {{ idUsuario ? 'Editar' : 'Novo Usuario' }}
+      {{ idUsuario ? 'Editar' : 'Novo Usuário' }}
       <v-icon v-if="idUsuario" right>mdi-pencil-outline</v-icon>
       <v-icon v-else right>mdi-account-plus-outline</v-icon>
     </v-btn>
@@ -9,7 +9,7 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
       <v-card>
         <v-card-title>
-          <span class="text-h5">{{ idUsuario ? 'Editar Usuario' : 'Novo Usuario' }}</span>
+          <span class="text-h5">{{ idUsuario ? 'Editar Usuário' : 'Novo Usuário' }}</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -62,7 +62,7 @@
                 </v-col>
                 <v-col v-if="usuarioSelecionado">
                   <v-text-field
-                      label="Carga Horaria"
+                      label="Carga Horária"
                       v-model="usuario.cargaHoraria"
                       required
                       :rules="validacoes.cargaHoraria"
@@ -90,7 +90,7 @@
                     <v-col>
                       <v-switch
                           v-model="usuario.sabado"
-                          label="Sabado"
+                          label="Sábado"
                           :disabled="!usuarioSelecionado"
                       ></v-switch>
                     </v-col>
@@ -110,7 +110,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
-          <v-btn color="blue darken-1" text @click="cadastrarUsuario" :disabled="!validacoes.valido || !usuarioSelecionado">{{ idUsuario ? 'Editar' : 'Cadastrar' }}</v-btn>
+          <v-btn color="blue darken-1" text @click="cadastrarUsuario" :disabled="!validacoes.valido || !usuarioSelecionado">{{ idUsuario ? 'Salvar' : 'Cadastrar' }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -150,7 +150,7 @@
           v => v.length <= 255 || 'O e-mail não pode possuir mais de 255 caracteres.'
         ],
         senha: [
-          v => !!v || 'A senha é obrigatório.',
+          v => !!v || 'A senha é obrigatória.',
           v => v.length >= 8 || 'A senha não pode possuir menos de 8 caracteres.',
           v => v.length <= 255 || 'A senha não pode possuir mais de 255 caracteres.'
         ],
@@ -164,14 +164,14 @@
           v => v.length <= 28 || 'O ID Clockify não pode possuir mais de 28 caracteres.'
         ],
         fotoPerfil: [
-          v => !!v || 'A foto de perfil é obrigatório.',
+          v => !!v || 'A foto de perfil é obrigatória.',
           v => v.length >= 5 || 'O foto de perfil não pode possuir menos de 5 caracteres.',
           v => v.length <= 255 || 'O foto de perfil não pode possuir mais de 255 caracteres.'
         ],
         cargaHoraria: [
-          v => !!v || 'A carga horaria é obrigatório.',
-          v => v >= 4 || 'A carga horaria não pode ser menor que 4',
-          v => v <= 8 || 'A carga horaria não pode ser maior que 8'
+          v => !!v || 'A carga horária é obrigatória.',
+          v => v >= 4 || 'A carga horária não pode ser menor que 4',
+          v => v <= 8 || 'A carga horária não pode ser maior que 8'
         ]
       }
     }),
@@ -208,7 +208,7 @@
               const { data: usuariosDisponiveis } = await this.$http.get('/clockify/usuarios')
 
               if (usuariosDisponiveis.length === 0) {
-                this.$toast.warning('Não há usuarios disponiveis no Clockify')
+                this.$toast.warning('Não há usuários disponíveis no Clockify')
                 this.dialog = false
                 return
               }
@@ -216,7 +216,7 @@
               this.usuariosDisponiveis = usuariosDisponiveis
             }
           } catch (erro) {
-            this.$toast.error('Não foi possivel buscar informações do servidor.')
+            this.$toast.error('Não foi possível buscar informações do servidor.')
           }
         }
       },
@@ -227,7 +227,7 @@
             this.usuario.email = usuario.email
             this.usuario.senha = '12345678'
             this.usuario.fotoPerfil = usuario.foto_perfil
-            this.usuario.cargaHoraria = '8'
+            this.usuario.cargaHoraria = usuario.cargaHoraria
             this.usuario.idClockify = usuario.id_clockify
 
             this.exibirSenha = true
@@ -270,11 +270,11 @@
           }
 
           if (this.idUsuario) {
-            this.$toast.error('Não foi possivel editar o usuario.')
+            this.$toast.error('Não foi possível editar o usuário.')
             return
           }
 
-          this.$toast.error('Não foi possivel cadastrar o usuario.')
+          this.$toast.error('Não foi possível cadastrar o usuário.')
         }
       }
     }

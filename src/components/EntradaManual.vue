@@ -139,8 +139,13 @@
               <v-col cols="12">
                 <v-textarea
                     label="Motivo"
+                    :rules="validaMotivo"
                     v-model="motivo"
+                    counter="255"
                 />
+                <v-checkbox
+                    v-model="justificada"
+                    label="Hora justificada" />
               </v-col>
             </v-row>
           </v-form>
@@ -172,6 +177,7 @@
     props: ['idUsuario'],
     data: () => ({
       dialog: false,
+      justificada: false,
       menuInicio: false,
       menuFim: false,
       menuInicioHoras: false,
@@ -180,7 +186,11 @@
       dataFim: '',
       inicioHoras: '',
       fimHoras: '',
-      motivo: ''
+      motivo: '',
+      validaMotivo: [
+        v => !!v || 'Informe o motivo da entrada manual.',
+        v => v.length <= 255 || 'Máximo de 255 caracteres atingido.'
+      ]
     }),
     methods: {
       async cadastrarEntradaManual () {
@@ -189,13 +199,14 @@
             id_usuario: this.idUsuario,
             inicio: `${this.dataInicio} ${this.inicioHoras}`,
             fim: `${this.dataFim} ${this.fimHoras}`,
-            motivo: this.motivo
+            motivo: this.motivo,
+            justificada: this.justificada
           })
 
           this.dialog = false
           this.$toast.success('Entrada cadastrada com sucesso!')
         } catch (erro) {
-          this.$toast.error('Não foi possivel cadastrar a entrada manual.')
+          this.$toast.error('Não foi possível cadastrar a entrada manual.')
         }
       }
     }

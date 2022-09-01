@@ -4,7 +4,7 @@ import 'vue-toastification/dist/index.css'
 
 Vue.use(Toast, {
   position: 'top-center',
-  timeout: false,
+  timeout: 3000,
   closeOnClick: false,
   draggablePercent: 0.35
 })

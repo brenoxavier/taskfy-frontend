@@ -184,7 +184,7 @@
           this.$store.commit('setRecarregar')
         } catch (erro) {
           console.error(erro)
-          this.$toast.error('Não foi possivel buscar informações do servidor.')
+          this.$toast.error('Não foi possível buscar informações do servidor.')
         }
       },
       async gerarTokenAutenticacao () {
@@ -192,7 +192,7 @@
           const { data } = await this.$http.get('/token')
           this.token = data.token
         } catch (erro) {
-          this.$toast.error('Devido a um problema inesperado, não será possivel gerar o relatorio.')
+          this.$toast.error('Devido a um problema inesperado, não será possível gerar o relatório.')
         }
       }
     }

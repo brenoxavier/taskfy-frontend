@@ -73,7 +73,7 @@
               this.$toast.error('E-mail ou senha incorretos.')
               break
             default:
-              this.$toast.error('Não foi possivel realizar a autenticação.')
+              this.$toast.error('Não foi possível realizar a autenticação.')
               break
           }
         }
