@@ -16,7 +16,7 @@
         >
           <template v-slot:top>
             <v-toolbar flat>
-              <v-toolbar-title class="font-weight-bold">Histórico do Mês</v-toolbar-title>
+              <v-toolbar-title class="font-weight-bold">Justificativas do Mês</v-toolbar-title>
             </v-toolbar>
           </template>
           <template v-slot:expanded-item="{ headers, item }">
@@ -28,10 +28,8 @@
                       <tr>
                         <th>Início</th>
                         <th>Fim</th>
-                        <th>Horas Trabalhadas</th>
-                        <th>Horas Diurnas</th>
-                        <th>Horas Noturnas</th>
-                        <th>Manual</th>
+                        <th>Horas Justificadas</th>
+                        <th>Motivo</th>
                         <th
                             v-if="admin"
                             class="text-right"
@@ -44,21 +42,8 @@
                       <tr v-for="entrada in item.entradas" :key="entrada.inicio">
                         <td>{{ formatarDataTempo(entrada.inicio) }}</td>
                         <td>{{ formatarDataTempo(entrada.fim) }}</td>
-                        <td>{{ formatarTempo(entrada.horas_totais.horas) }}:{{ formatarTempo(entrada.horas_totais.minutos) }}</td>
-                        <td>{{ formatarTempo(entrada.horas_diurnas.horas) }}:{{ formatarTempo(entrada.horas_diurnas.minutos) }}</td>
-                        <td>{{ formatarTempo(entrada.horas_noturnas.horas) }}:{{ formatarTempo(entrada.horas_noturnas.minutos) }}</td>
-                        <td v-if="entrada.motivo">
-                          <v-tooltip bottom>
-                            <template v-slot:activator="{ on, attrs }">
-                              <a
-                                  v-bind="attrs"
-                                  v-on="on"
-                              >Sim</a>
-                            </template>
-                            <span>{{ entrada.motivo }}</span>
-                          </v-tooltip>
-                        </td>
-                        <td v-else>Não</td>
+                        <td>{{ formatarTempo(entrada.horas_justificadas.horas) }}:{{ formatarTempo(entrada.horas_justificadas.minutos) }}</td>
+                        <td>{{ entrada.motivo }}</td>
                         <td
                             v-if="admin"
                             class="text-right"
@@ -91,9 +76,7 @@
       cabecalho: [
         { text: 'Dia', sortable: false, value: 'dia' },
         { text: 'Entradas de Tempo', sortable: false, value: 'entradasTempo' },
-        { text: 'Horas trabalhadas', value: 'horasTrabalhadas' },
-        { text: 'Horas Diurnas', value: 'horasDiurnas' },
-        { text: 'Horas Noturnas', value: 'horasNoturnas' }
+        { text: 'Horas Justificadas', value: 'horasJustificadas' }
       ],
       valores: []
     }),
@@ -120,7 +103,7 @@
           const entradas = []
 
           dia.entradas_de_tempo.map(entrada => {
-            if (!entrada.justificada) {
+            if (entrada.justificada) {
               entradas.push(entrada)
             }
           })
@@ -129,9 +112,7 @@
             this.valores.push({
               dia: format(new Date(dia.entradas_de_tempo[0].inicio), 'dd/MM/yyyy'),
               entradasTempo: entradas.length,
-              horasTrabalhadas: `${this.formatarTempo(dia.horas_totais.horas)}:${this.formatarTempo(dia.horas_totais.minutos)}`,
-              horasDiurnas: `${this.formatarTempo(dia.horas_diurnas.horas)}:${this.formatarTempo(dia.horas_diurnas.minutos)}`,
-              horasNoturnas: `${this.formatarTempo(dia.horas_noturnas.horas)}:${this.formatarTempo(dia.horas_noturnas.minutos)}`,
+              horasJustificadas: `${this.formatarTempo(dia.horas_justificadas.horas)}:${this.formatarTempo(dia.horas_justificadas.minutos)}`,
               entradas: entradas
             })
           }

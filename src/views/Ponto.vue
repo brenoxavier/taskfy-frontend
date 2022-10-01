@@ -59,6 +59,11 @@
             :horas-trabalhadas="relatorio.horasTrabalhadas"
         />
       </v-row>
+      <v-row>
+        <TabelaJustificativas
+            :horas-trabalhadas="relatorio.horasTrabalhadas"
+        />
+      </v-row>
     </v-container>
   </v-main>
 </template>
@@ -69,6 +74,7 @@
   import ResumoMes from '../components/ResumoMes'
   import GraficoHoras from '../components/GraficoHoras'
   import TabelaHoras from '../components/TabelaHoras'
+  import TabelaJustificativas from '../components/TabelaJustificativas.vue'
 
   export default {
     components: {
@@ -76,7 +82,8 @@
       SeletorData,
       ResumoMes,
       GraficoHoras,
-      TabelaHoras
+      TabelaHoras,
+      TabelaJustificativas
     },
     data: () => ({
       token: '',
@@ -106,6 +113,10 @@
             minutos: 0
           },
           horasTotais: {
+            horas: 0,
+            minutos: 0
+          },
+          horasJustificadas: {
             horas: 0,
             minutos: 0
           },
@@ -174,6 +185,8 @@
           this.relatorio.horasTrabalhadas.horasDiurnas.minutos = resposta.horas_trabalhadas.horas_diurnas.minutos
           this.relatorio.horasTrabalhadas.horasNoturnas.horas = resposta.horas_trabalhadas.horas_noturnas.horas
           this.relatorio.horasTrabalhadas.horasNoturnas.minutos = resposta.horas_trabalhadas.horas_noturnas.minutos
+          this.relatorio.horasTrabalhadas.horasJustificadas.horas = resposta.horas_trabalhadas.horas_justificadas.horas
+          this.relatorio.horasTrabalhadas.horasJustificadas.minutos = resposta.horas_trabalhadas.horas_justificadas.minutos
           this.relatorio.horasTrabalhadas.dias = resposta.horas_trabalhadas.dias
 
           this.relatorio.saldoMensal.horasTotais = resposta.saldo_mensal.horas_totais

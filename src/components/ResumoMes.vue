@@ -48,6 +48,18 @@
         </v-card-text>
       </v-card>
     </v-col>
+    <v-col cols="12" sm="6" md="3">
+      <v-card>
+        <v-card-title>Horas Justificadas</v-card-title>
+        <v-card-text>
+          <v-row>
+            <v-col class="text-h4">
+              {{ formatarTempo(relatorio.horasTrabalhadas.horasJustificadas.horas) }}:{{ formatarTempo(relatorio.horasTrabalhadas.horasJustificadas.minutos) }}
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-card>
+    </v-col>
   </v-row>
 </template>
 
