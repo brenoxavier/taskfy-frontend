@@ -39,3 +39,13 @@ jobs:
         context: .
         push: true
         tags: brenoxavier/taskfy-frontend:latest
+        
+    - name: Setting up environment
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          echo $PWD
