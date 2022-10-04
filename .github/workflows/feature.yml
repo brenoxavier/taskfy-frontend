@@ -48,4 +48,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
-          echo $PWD
+          podman stop taskfy_frontend
+          podman rm taskfy_frontend
+          podman run --name taskfy_frontend --pull=always --restart=unless-stopped --quiet -p 30001:8080 docker.io/brenoxavier/taskfy-frontend:latest
