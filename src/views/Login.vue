@@ -25,7 +25,7 @@
                    color="primary"
                    class="mt-3"
             >
-              Teste
+              Entrar
             </v-btn>
           </v-form>
         </v-card>
