@@ -51,4 +51,4 @@ jobs:
         script: |
           podman stop taskfy_frontend
           podman rm taskfy_frontend
-          podman run --name taskfy_frontend --pull=always --restart=unless-stopped --quiet -p 30001:8080 docker.io/brenoxavier/taskfy-frontend:latest
+          podman run --name taskfy_frontend --pull=always --restart=unless-stopped --quiet -d -p 30001:8080 docker.io/brenoxavier/taskfy-frontend:latest
