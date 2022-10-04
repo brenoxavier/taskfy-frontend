@@ -39,3 +39,16 @@ jobs:
         context: .
         push: true
         tags: brenoxavier/taskfy-frontend:latest
+        
+    - name: Setting up environment
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        port: 22
+        script: |
+          podman stop taskfy_frontend
+          podman rm taskfy_frontend
+          podman run --name taskfy_frontend --pull=always --restart=unless-stopped --quiet -d -p 30001:8080 docker.io/brenoxavier/taskfy-frontend:latest
