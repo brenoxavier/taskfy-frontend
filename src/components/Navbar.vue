@@ -36,14 +36,6 @@
             <v-list-item-title>Ponto</v-list-item-title>
           </v-list-item>
         </router-link>
-        <router-link :to="{ name: 'Tarefas' }" style="text-decoration: none;">
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-format-list-checks</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Minhas tarefas</v-list-item-title>
-          </v-list-item>
-        </router-link>
         <!--        <v-list-item link>-->
         <!--          <v-list-item-icon>-->
         <!--            <v-icon>mdi-cog-outline</v-icon>-->

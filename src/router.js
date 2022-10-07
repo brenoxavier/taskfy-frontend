@@ -4,7 +4,6 @@ import Login from './views/Login.vue'
 import Ponto from './views/Ponto.vue'
 import Usuarios from './views/Usuarios.vue'
 import Feriados from './views/Feriados.vue'
-import MinhasTarefas from './views/MinhasTarefas.vue'
 
 Vue.use(VueRouter)
 
@@ -34,11 +33,6 @@ const routes = [
     path: '/feriados',
     name: 'Feriados',
     component: Feriados
-  },
-  {
-    path: '/tarefas',
-    name: 'Tarefas',
-    component: MinhasTarefas
   }
 ]
 
