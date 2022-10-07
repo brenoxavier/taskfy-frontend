@@ -4,7 +4,7 @@
       <v-col cols="11" sm="6" md="5" lg="4" xl="3">
         <v-card elevation="2" class="card-login">
           <v-img src="@/assets/newm.png" contain></v-img>
-          <v-form v-model="validacoes.valido" class="mt-5">
+          <v-form v-model="validacoes.valido" class="mt-5" @submit="login">
             <v-text-field
                 v-model="formularios.email"
                 :rules="validacoes.email"
@@ -18,8 +18,8 @@
                 label="Senha"
                 required
             ></v-text-field>
-            <v-btn @click="login"
-                   :disabled="!validacoes.valido"
+            <v-btn :disabled="!validacoes.valido"
+                   type="submit"
                    block
                    large
                    color="primary"
@@ -57,7 +57,9 @@
       }
     }),
     methods: {
-      async login () {
+      async login (event) {
+        event.preventDefault()
+
         try {
           const { data } = await this.$http.post('/autenticar', {
             email: this.formularios.email,
