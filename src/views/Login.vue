@@ -25,7 +25,7 @@
                    color="primary"
                    class="mt-3"
             >
-              Entrar
+              Sair
             </v-btn>
           </v-form>
         </v-card>
